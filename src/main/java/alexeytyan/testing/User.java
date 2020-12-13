@@ -13,15 +13,18 @@ public class User {
     private static Map<Integer, User> allUsers = new HashMap<>();
 
     public User(String name, int age, Sex sex) {
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
+        if (name != null && !name.isEmpty() && age > 0 && sex != null){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
 
-        if (!hasUser()){
-            countId++;
-            this.id = countId;
-            allUsers.put(id, this);
+            if (!hasUser()) {
+                countId++;
+                this.id = countId;
+                allUsers.put(id, this);
+            }
         }
+
     }
 
     private boolean hasUser(){
@@ -77,6 +80,18 @@ public class User {
 
     public static int getAverageAgeOfAllUsers(Sex sex){
         return getAllAgeUsers(sex) / getHowManyUsers(sex);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Sex getSex() {
+        return sex;
     }
 
     @Override
