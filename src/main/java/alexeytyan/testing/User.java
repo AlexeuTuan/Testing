@@ -10,13 +10,9 @@ public class User {
     private int age;
     private Sex sex;
 
-    private static Map<Integer, User> allUsers;
+    private static Map<Integer, User> allUsers = new HashMap<>();
 
     public User(String name, int age, Sex sex) {
-        if (allUsers == null){
-            allUsers = new HashMap<>();
-        }
-
         this.name = name;
         this.age = age;
         this.sex = sex;
